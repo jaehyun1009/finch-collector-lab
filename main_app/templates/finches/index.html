@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+  {% for finch in finches %}
+    <h2>{{finch.name}}</h2>
+    {% if finch.age > 0 %}
+      <p>A {{finch.age}} old {{finch.breed}}</p>
+    {% else %}
+      <p>A {{finch.breed}} finch.</p>
+    {% endif %}
+    <p>{{finch.description}}</p>
+  {% endfor %}
+{% endblock %}
