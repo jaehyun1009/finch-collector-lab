@@ -5,9 +5,11 @@
 
 {% block content %}
   {% for finch in finches %}
-    <h2>{{finch.name}}</h2>
+    <a href="{% url 'finches_detail' finch.id %}">
+      <h2>{{finch.name}}</h2>
+    </a>
     {% if finch.age > 0 %}
-      <p>A {{finch.age}} old {{finch.breed}}</p>
+      <p>A {{finch.age}} year old {{finch.breed}}</p>
     {% else %}
       <p>A {{finch.breed}} finch.</p>
     {% endif %}
