@@ -9,4 +9,8 @@
   <h2>A {{finch.breed}} finch.</h2>
 {% endif %}
 <p>{{finch.description}}</p>
+<div>
+  <a href={% url 'finches_update' finch.id %}>Edit</a>
+  <a href={% url 'finches_delete' finch.id %}>Delete</a>
+</div>
 {% endblock %}
