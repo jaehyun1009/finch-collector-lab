@@ -48,6 +48,11 @@
   {% endif %}
   <h3>Add a Feeding</h3>
   <form action={% url 'add_feeding' finch.id %} method="post">
+    {% if finch.fed_for_today %}
+      <p>{{finch.name}} has been fed all of their meals for today!</p>
+    {% else %}
+      <p>{{finch.name}} might be hungry!</p>
+    {% endif %}
     {% csrf_token %}
     {{feeding_form.as_p}}
     <button type="submit">Add Feeding</button>

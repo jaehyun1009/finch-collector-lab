@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+  All Finch Toys
+</section>
+<section>
+  {% for toy in toy_list %}
+    <div>
+      <div>
+      </div>
+      <a href={% url 'toys_detail' toy.id %}>
+        <div>
+          <h2>{{toy.name}}</h2>
+          <p>{{toy.color}}</p>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+  <div>
+  </div>
+  <div>
+    <h2>{{toy.name}}</h2>
+    <p>A {{toy.color}} toy</p>
+  </div>
+</div>
+<a href={% url 'toys_update' toy.id %}>Edit</a>
+<a href={% url 'toys_delete' toy.id %}>Delete</a>
+{% endblock %}
