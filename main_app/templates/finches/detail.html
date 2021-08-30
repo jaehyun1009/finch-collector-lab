@@ -28,6 +28,45 @@
   </div>
 </section>
 <section>
+  <div>
+    <h2>Toys</h2>
+  </div>
+  <div>
+    <h3>{{finch.name}}'s Toys'</h3>
+    <div>
+      {% if finch.toys.count %}
+        {% for toy in finch.toys.all %}
+          <a href={% url 'toys_detail' toy.id %}>
+            <p>A {{toy.color}} {{toy.name}}</p>
+          </a>
+        {% endfor %}
+      {% else %}
+        <p>{{finch.name}} doesn't have any toys 😞</p>
+      {% endif %}
+    </div>
+  </div>
+  <div>
+    <h3>Available Toys</h3>
+    <div>
+      {% if toys.count %}
+        {% for toy in toys.all %}
+          <div>
+            <a href={% url 'toys_detail' toy.id %}>
+              <p>A {{toy.color}} {{toy.name}}</p>
+            </a>
+            <form action={% url 'assoc_toy' finch.id toy.id %} method="post">
+              {% csrf_token %}
+              <button type="submit">Give toy</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>
+          {{finch.name}} already has all the available toys 🥳
+        </p>
+      {% endif %}
+</section>
+<section>
   <h2>Feedings</h2>
   {% if finch.feeding_set.all.count %}
   <table>
